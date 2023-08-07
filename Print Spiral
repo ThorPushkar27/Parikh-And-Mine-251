@@ -1,0 +1,39 @@
+TC=O(N2)
+
+void spiralPrint(int **input, int nRows, int nCols)
+{
+    
+    int sc=0;
+    int ec=nCols-1;
+    int sr=0;
+    int er=nRows-1;
+    long long total= nRows*nCols;
+    long long count=0;
+
+    while(count<total){
+        for(int i=sc; i<=ec && count<total; i++){
+            cout<<input[sr][i]<<" ";
+            count++;
+            
+        }
+        sr++;
+        for(int i=sr; i<=er && count<total; i++){
+            cout<<input[i][ec]<<" ";
+            count++;
+            
+        }
+        ec--;
+        for(int i=ec;i>=sc && count<total; i--){
+            cout<<input[er][i]<<" ";
+            count++;
+        }
+        er--;
+        for(int i=er;i>=sr && count<total;i--){
+            cout<<input[i][sc]<<" ";
+            count++;
+        }
+        sc++;
+        
+    }
+    //Write your code here
+}
