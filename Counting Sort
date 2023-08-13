@@ -1,0 +1,29 @@
+#include <bits/stdc++.h> 
+vector<int> sort(int n, vector<int> &arr)
+{
+    vector<int>ans(n);
+    int mini = INT_MAX;
+    int maxi = INT_MIN;
+    for(int i =0; i<n; i++){
+        maxi = max(arr[i],maxi);
+        mini = min(arr[i],mini);
+    }
+    int m = (maxi-mini)+1;
+    int freq[m]={0};
+    for(int i =0; i<n; i++){
+        freq[arr[i]-mini]++;   
+    }
+    int presum[m];
+    presum[0]=freq[0]-1;
+    for(int i =1; i<m; i++){
+        presum[i]=presum[i-1]+freq[i];
+    }
+    for(int i =n-1; i>=0; i--){
+        ans[presum[arr[i]-mini]]=arr[i];
+        presum[arr[i]-mini]--;
+
+    }
+    return ans;
+
+    // Write your code here.
+}
